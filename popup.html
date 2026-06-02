@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Teams 要約アシスタント</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: #6264a7;
+    }
+    .field { margin-bottom: 14px; }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .hint {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: #6264a7; }
+    button.save {
+      width: 100%;
+      padding: 9px;
+      background: #6264a7;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button.save:hover { background: #4f50a0; }
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #27ae60;
+      min-height: 16px;
+      text-align: center;
+    }
+    .divider {
+      margin: 16px 0;
+      border: none;
+      border-top: 1px solid #eee;
+    }
+    .usage {
+      background: #f5f5fb;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 12px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .usage strong { color: #6264a7; }
+    .model-examples {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h2>⚙️ Teams 要約アシスタント</h2>
+
+  <div class="field">
+    <label for="ollamaModel">使用するモデル</label>
+    <div class="hint">ollama list で確認できます</div>
+    <input type="text" id="ollamaModel" placeholder="llama3.2">
+    <div class="model-examples">例: llama3.2 / mistral / gemma3 / phi4</div>
+  </div>
+
+  <div class="field">
+    <label for="ollamaUrl">Ollama の URL</label>
+    <div class="hint">通常は変更不要です</div>
+    <input type="text" id="ollamaUrl" placeholder="http://localhost:11434">
+  </div>
+
+  <button class="save" id="saveBtn">保存</button>
+  <div class="status" id="status"></div>
+
+  <hr class="divider">
+
+  <div class="usage">
+    <strong>使い方</strong><br>
+    1. <code>ollama serve</code> でOllamaを起動<br>
+    2. Edge で teams.microsoft.com を開く<br>
+    3. まとめたいメッセージを<strong>右クリック</strong><br>
+    4.「📋 ここから要約する」を選択
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

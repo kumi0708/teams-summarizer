@@ -1,0 +1,7 @@
+# Windows
+Thumbs.db
+desktop.ini
+
+# Edge/Chrome 拡張機能のビルド成果物
+*.crx
+*.pem

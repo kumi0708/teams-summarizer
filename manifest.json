@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Teams 要約アシスタント",
+  "version": "1.0.0",
+  "description": "Microsoft Teams のメッセージを右クリックで要約します",
+  "permissions": ["contextMenus", "storage", "scripting"],
+  "host_permissions": [
+    "https://teams.microsoft.com/*",
+    "https://teams.cloud.microsoft/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Teams 要約アシスタント - 設定"
+  }
+}
